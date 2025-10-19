@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+{% load static %}  
+
+{% block content %}
+    <div class="card mb-3 shadow">
+        <div class="card-header bg-warning text-dark">
+            <h2 class="mb-0">{{ pokemon.nombre }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="card-text lead">**Número Pokédex**: #{{ pokemon.id }}</p>
+                    <p class="card-text">**Tipo Principal**: 
+                        <span class="badge bg-primary fs-6">{{ pokemon.tipo }}</span>
+                    </p>
+                    <hr>
+                    <p class="card-text">{{ pokemon.descripcion }}</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-4 bg-light rounded border">
+                        
+                        
+                        {% if pokemon.imagen_nombre %} 
+                            <img 
+                                src="{% static 'pokedex/'|add:pokemon.imagen_nombre %}" 
+                                alt="Imagen de {{ pokemon.nombre }}" 
+                                class="img-fluid" 
+                                style="max-height: 200px; object-fit: contain;"
+                            >
+                        {% else %}
+                            <p class="text-muted">Imagen no disponible</p>
+                        {% endif %}
+                        {# ➡️ FIN del bloque de imagen #}
+                    </div>
+                </div>
+            </div>
+            
+            <a href="{% url 'lista_pokemones' %}" class="btn btn-outline-secondary mt-4">← Volver a la Lista</a>
+        </div>
+    </div>
+{% endblock %}

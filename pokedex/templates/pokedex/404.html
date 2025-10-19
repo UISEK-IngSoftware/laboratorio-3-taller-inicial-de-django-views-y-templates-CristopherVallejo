@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <div class="alert alert-danger text-center" role="alert">
+        <h1 class="alert-heading">¡Error 404!</h1>
+        <p>El Pokémon con ID <strong>#{{ id }}</strong> no se pudo encontrar en esta Pokédex.</p>
+        <hr>
+        <p class="mb-0">{{ mensaje }}</p>
+        <a href="{% url 'lista_pokemones' %}" class="btn btn-danger mt-3">Volver al inicio</a>
+    </div>
+{% endblock %}

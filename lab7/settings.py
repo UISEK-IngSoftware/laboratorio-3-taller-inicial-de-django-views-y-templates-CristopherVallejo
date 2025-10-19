@@ -54,8 +54,8 @@ ROOT_URLCONF = 'lab7.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [], # Dejar vacío si solo usas el directorio 'templates' de la app
+        'APP_DIRS': True, # <-- ¡Esto debe ser True!
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -120,4 +120,15 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+INSTALLED_APPS = [
+    # Las 6 apps predeterminadas de Django SON OBLIGATORIAS para 'migrate' y 'runserver'
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes', # <-- ¡Esta es la que está causando el error si falta!
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+    # Tu aplicación
+    'pokedex',
+]
